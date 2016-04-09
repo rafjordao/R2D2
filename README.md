@@ -24,5 +24,3 @@ Equipe:
 		Diego Reynaux - e-mail: drba2@cin.ufpe.br
 		Rafael Jordão - e-mail: rfpj@cin.ufpe.br
 		Roberto Oliveira - e-mail: rosf3@cin.ufpe.br
-
-teste
