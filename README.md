@@ -10,7 +10,8 @@ Necessidade:
 		sobre os chamados que existem em sua rua. 
 		
 		Quando as pessoas desejam saber informações sobre os chamados que existem em suas ruas,
-		muitas não acham viável o fato de ter que entrar em contato com o atendente, pois a ligação é demorada e cansativa.
+		muitas não acham viável o fato de ter que entrar em contato com o atendente, pois a ligação 
+		é demorada e cansativa.
 
 Objetivo:
 
