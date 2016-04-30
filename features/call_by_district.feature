@@ -1,7 +1,7 @@
 Feature: User view call by  district
 	As a User
 	I want select one district
-	to view its called
+	In order to view its called
 	
 	Background: Start from the index page
 		Given I am on the index page

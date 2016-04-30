@@ -1,7 +1,7 @@
 Feature: User public place monitoring
 	As a User
 	I want select one public place
-	to monitor
+	In order to monitor
 	
 	Background: Start from the index page
 		Given I am on the index page

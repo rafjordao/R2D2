@@ -1,7 +1,7 @@
 Feature: User view call by public place
 	As a User
 	I want select one public place
-	to view its calls
+	In order to view its calls
 	
 	Background: Start from the index page
 		Given I am on the index page

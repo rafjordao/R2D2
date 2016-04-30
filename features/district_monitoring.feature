@@ -1,7 +1,7 @@
 Feature: User district monitoring
 	As a User
 	I want select one district
-	to monitor
+	In order to monitor
 	
 	Background: Start from the index page
 		Given I am on the index page
