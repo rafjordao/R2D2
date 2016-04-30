@@ -1,3 +1,7 @@
+Given(/^I am on the login page$/) do
+    assert_current_path(login_path)
+end
+
 When (/^I press the "([^"]*)" button$/) do |text|
     click_button(text)
 end
