@@ -10,7 +10,7 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |area,text|
    fill_in area, with: text
 end
 
-When(/^I should see a text "([^"]*)"$/) do |text|
+Then(/^I should see a text "([^"]*)"$/) do |text|
     expect(page).to have_content(text)
 end
 
