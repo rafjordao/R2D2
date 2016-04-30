@@ -1,5 +1,5 @@
-Given(/^I am on the login page$/) do
-    assert_current_path(login_path)
+Given(/^I am on the index page$/) do
+    assert_current_path(index_path)
 end
 
 When (/^I press the "([^"]*)" button$/) do |text|
@@ -7,7 +7,7 @@ When (/^I press the "([^"]*)" button$/) do |text|
 end
 
 Then(/^I should go to register page/) do
-    assert_current_path(register_path)
+    assert_current_path(edit_profile_path)
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |area,text|
