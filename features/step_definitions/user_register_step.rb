@@ -1,5 +1,5 @@
 When (/^I press the "([^"]*)" button$/) do |text|
-    click_button(arg)
+    click_button(text)
 end
 
 Then(/^I should go to register page/) do

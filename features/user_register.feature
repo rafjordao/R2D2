@@ -26,7 +26,7 @@ Feature: User Register
         When I fill in "Senha" with "123"
         Then I should see a text "Senha precisa ter tamanho entre 6 e 16 caracteres"
         
-    Scenario: Password and Password comfirm not matching
+    Scenario: Password and Password comfirmation not matching
         When I fill in "Senha" with "minhasenha1234"
         And I fill in "Confsenha" with "minhasenha5678"
         Then I should see a text "O campo senha e confirmar senha precisam estar iguais"
