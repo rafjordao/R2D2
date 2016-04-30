@@ -14,12 +14,6 @@ Feature: statical graph
           
         Scenario: Successful seeing the graph for district
             When I press "Por bairro" radial button
-            And I select "Encruzilhada" from combobox
+            And I choose in "Encruzilhada" from select "Bairro"
             And I press "Formar gráfico" button
             Then I should see a Statistical Graph
-            
-        Scenario: Fail seeing the graph for district
-            When I press "Por bairro" radial button
-            And I fill in "blablabla" from combobox
-            And I press "Formar gráfico" button
-            Then I should see a text "Bairro invalido!"
