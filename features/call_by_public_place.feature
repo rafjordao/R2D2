@@ -9,7 +9,7 @@ Feature: User view call by public place
 		Then I should go to chamados page
 		
 	Scenario: view call by public place
-		When I select one public place
+		When I choose in "Av. Beberibe" from select "Logradouro" 
 		And	I press the "Pesquisar por logradouro" button
 		Then I should see a text "Serviço"
 		And I should see a text "Data de Criação"

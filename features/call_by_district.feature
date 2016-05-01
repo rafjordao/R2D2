@@ -9,7 +9,7 @@ Feature: User view call by  district
 		Then I should go to chamados page
 		
 	Scenario: view called by district
-		When I select one district
+		When I choose in "Agua Fria" from select "Bairro"
 		And	I press the "Pesquisar por bairro" button
 		Then I should see a text "Serviço"
 		And I should see a text "Data de Criação"
