@@ -4,14 +4,14 @@ Feature: Login
     I want to use my facebook, my google+ or my system register
   
     Scenario: Successful login using system register
-        Given I am on the login page
+        Given I am not authenticated
         When I fill in "e-mail" with "meu@e-mail.com"
         And I fill in "Senha" with "minhasenha1234"
         And I press the "Fazer Login" button
-        Then I should go to the index page
+        Then I am redirected to "/index"
     
     Scenario: Unsuccessful login using system register
-        Given I am on the login page
+        Given I am not authenticated
         When I fill in "e-mail" with "asde.com"
         And I fill in "Senha" with "asdasdasd"
         And I press the "Fazer Login" button
