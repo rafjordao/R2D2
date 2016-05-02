@@ -14,9 +14,9 @@ When(/I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
     select option, from: tag
 end
 
-Then (/^be redirected to the index page$/) do
-    assert_current_path(index_path)
-end
+#Then (/^be redirected to the index page$/) do
+#    assert_current_path(index_path)
+#end
 
 #Then (/^I should see a text "([^"]*)"$/) do |text|
 #    expect(page).to have_content(text)

@@ -5,34 +5,38 @@ Feature: User Register
   
     Background: Start from the login page
         Given I am on the login page
-        When I press the "não tem cadastro?" button
+        When I press the "register" link
         Then I should go to register page
   
     Scenario: Successful register
-        When I fill in "Nome" with "meu nome"
-        And I fill in "Sobrenome" with "meu sobrenome"
-        And I fill in "e-mail" with "meu@email.com"
-        And I fill in "Senha" with "minhasenha1234"
-        And I fill in "Confsenha" with "minhasenha1234"
-        And I press the "Continuar" button
-        Then I should see a text "Cadastro feito com sucesso!"
+#        When I fill in "Nome" with "meu nome"
+#        And I fill in "Sobrenome" with "meu sobrenome"
+        When I fill in "user[email]" with "meu@email.com"
+        And I fill in "user[password]" with "minhasenha1234"
+        And I fill in "user[password_confirmation]" with "minhasenha1234"
+        And I press the "Sign Up" form button
+#        Then I should see a text "Cadastro feito com sucesso!"
         And be redirected to the index page
     
     Scenario: Wrong e-mail format
-        When I fill in "e-mail" with "asdwe.com"
-        Then I should see a text "Porfavor, preencha o campo e-mail com um e-mail válido"
-    
+        When I fill in "user[email]" with "asdwe.com"
+        And I press the "Sign Up" form button
+        Then I should see a text "Inclua um '@' no endereço de e-mail."
+        
     Scenario: Wrong password format
-        When I fill in "Senha" with "123"
-        Then I should see a text "Senha precisa ter tamanho entre 6 e 16 caracteres"
+        When I fill in "user[password]" with "123"
+        And I press the "Sign Up" form button
+        Then I should see a text "Password is too short (minimum is 6 characters)"
         
     Scenario: Password and Password comfirmation not matching
-        When I fill in "Senha" with "minhasenha1234"
-        And I fill in "Confsenha" with "minhasenha5678"
-        Then I should see a text "O campo senha e confirmar senha precisam estar iguais"
+        When I fill in "user[password]" with "minhasenha1234"
+        And I fill in "user[password_confirmation]" with "minhasenha5678"
+        And I press the "Sign Up" form button
+        Then I should see a text "Password confirmation doesn't match Password"
         
     Scenario: Empty form
-        When I press the "Continuar" button
-        Then I should see a text "Preencha os campos obrigatórios"
+        And I press the "Sign Up" form button
+        Then I should see a text "Email can't be blank"
+        And I should see a text "Password can't be blank"
         
     

@@ -1,5 +1,5 @@
 Given(/^I am not authenticated$/) do
-   visit '/users/sing_in'
+   assert_current_path(root_path)
 end
     
 When (/^I press the "([^"]*)" button$/) do |text|
