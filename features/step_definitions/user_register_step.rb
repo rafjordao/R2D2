@@ -1,5 +1,5 @@
 Given(/^I am on the login page$/) do
-    visit(user_session_path)
+    visit(login_path)
 end
 
 #When (/^I press the "([^"]*)" button$/) do |text|
@@ -7,7 +7,7 @@ end
 #ends
 
 Then(/^I should go to register page/) do
-    assert_current_path(new_user_registration_path)
+    assert_current_path(signup_path)
 end
 
 When(/^I press the "([^"]*)" link/) do |link|

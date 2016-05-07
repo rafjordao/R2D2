@@ -9,13 +9,13 @@ Feature: User Register
         Then I should go to register page
   
     Scenario: Successful register
-#        When I fill in "Nome" with "meu nome"
-#        And I fill in "Sobrenome" with "meu sobrenome"
+        When I fill in "user[first_name]" with "meu nome"
+        And I fill in "user[last_name]" with "meu sobrenome"
         When I fill in "user[email]" with "meu@email.com"
         And I fill in "user[password]" with "minhasenha1234"
         And I fill in "user[password_confirmation]" with "minhasenha1234"
         And I press the "Sign Up" form button
-#        Then I should see a text "Cadastro feito com sucesso!"
+        Then I should see a text "Cadastro feito com sucesso!"
         And be redirected to the index page
     
     Scenario: Wrong e-mail format
