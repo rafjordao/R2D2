@@ -16,7 +16,7 @@ end
 
 When(/^I press the "([^"]*)" form button/) do |button|
 #    page.should have_selector("input[type=submit]","[value='Sign Up']")
-    page.find("input[type=submit]").click
+    page.find("button[type=submit]").click
 end
 
 #When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |area,text|

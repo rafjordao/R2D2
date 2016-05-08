@@ -1,0 +1,67 @@
+<br></br>
+<br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<div class="form-body">
+    <ul class="nav nav-tabs tab">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Alterar Nome</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Alterar e-mail</a></li>
+        <li><a data-toggle="tab" href="#sectionC">Alterar Senha</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="sectionA" class="tab-pane fade in active">
+        <div class="innter-form">
+            <%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
+            <p></p>
+            <form method="post">
+            <label>Nome</label>
+            <input type="text" class="form-control" name="user[first_name]">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" name="user[last_name]">
+            <label>Password</label>
+            <input type="password" class="form-control" name="user[password]">
+            <button type="submit" class="btn btn-success btn-lg">Editar Nome</button>
+            </form>
+            <% end %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+			
+			<%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
+			<p></p>
+            <form method="post">
+            <label>E-mail</label>
+            <input type="text" class="form-control" name="user[email]">
+            <label>Confirmar E-mail</label>
+            <input type="text" class="form-control" name="user[email_confirm]">
+            <label>Password</label>
+            <input type="password" class="form-control" name="user[password]">
+            <button type="submit" class="btn btn-success btn-lg">Editar E-mail</button>
+            </form>
+            <% end %>
+            
+        </div>
+        <div id="sectionC" class="tab-pane fade">
+			
+			<%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
+			<p></p>
+            <form method="post">
+            <label>Senha Atual</label>
+            <input type="text" class="form-control" name="user[password]">
+            <label>Nova Senha</label>
+            <input type="text" class="form-control" name="user[new_password]">
+            <label>Confirmar Nova Senha</label>
+            <input type="password" class="form-control" name="user[password_confirmation]">
+            <button type="submit" class="btn btn-success btn-lg">Editar E-mail</button>
+            </form>
+            <% end %>
+            
+        </div> 
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
