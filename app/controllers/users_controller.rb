@@ -5,9 +5,6 @@ class UsersController < ApplicationController
     end 
 
     def create 
-       puts params[:user]['email']
-        u = User.find_by_sql(['select * from users where email=?', params[:user]['email']])
-        
         usuario = User.find_by_email(params[:user][:email])
         if usuario==nil
             @user = User.new(user_params) 
