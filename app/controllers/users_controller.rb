@@ -4,16 +4,15 @@ class UsersController < ApplicationController
         @user = User.new 
     end 
     
-   def edit
-    @user = User.find(current_user.id)
-   end
+    def edit
+        @user = User.find(current_user.id)
+     end
    
-   def show
-       
-    @user = User.find(current_user.id)
-   end
+     def show
+      @user = User.find(current_user.id)
+     end
    
-   def update
+    def update
        puts"updatee"
         u =  User.find_by(email: params[:user][:email] ).try(:authenticate,params[:user][:password] )
         if u!=false
@@ -32,7 +31,6 @@ class UsersController < ApplicationController
     end
          
     def create 
-        
         usuario = User.find_by_email(params[:user][:email])
         if usuario==nil
             @user = User.new(user_params) 
