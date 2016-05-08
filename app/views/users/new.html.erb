@@ -1,26 +1,27 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-<h1>Sign up</h1>
-
-    <%= form_for(@user) do |f| %>
-        <div>
-        <h3><%= f.label :nome %></h2>
-        <%= f.text_field :first_name, :placeholder => "First name" %>
-        </div>
-        <div>
-        <h3><%= f.label :sobrenome %></h2>
-        <%= f.text_field :last_name, :placeholder => "Last name" %>
-        </div>
-        <div>
-        <h3><%= f.label :email %></h2>
-        <%= f.email_field :email, :placeholder => "Email" %>
-        </div>
-        <div>
-        <h3><%= f.label :senha %></h2>
-        <%= f.password_field :password, :placeholder => "Password" %>
-        </div>
-        <h3><%= f.label :confirmar_senha %></h2>
-        <%= f.password_field :password_confirmation, :placeholder => "Password" %>
-        </div>
-        <%= f.submit "Sign up" %>
-    <% end %>
+<br></br>
+<%= form_for(@user) do |f| %>
+<form role="form" >
+   <h2>Log in</h2>
+   <div class="form-group">
+      <label for="email">Nome:</label>
+      <input type="text" class="form-control" id="email" name="user[first_name]">
+   </div>
+   <div class="form-group">
+      <label for="pwd">Sobre nome:</label>
+      <input type="text" class="form-control" id="pwd" name="user[last_name]">
+   </div>
+   <div class="form-group">
+      <label for="pwd">Email:</label>
+      <input type="email" class="form-control" id="pwd" name="user[email]">
+   </div>
+   <div class="form-group">
+      <label for="pwd">Senha:</label>
+      <input type="password" class="form-control" id="pwd" name="user[password]">
+   </div>
+   <div class="form-group">
+      <label for="pwd">Confirmar senha:</label>
+      <input type="password" class="form-control" id="pwd" name="user[password_confirmation]">
+   </div>
+   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Log in</button>
+</form>
+<% end %>
