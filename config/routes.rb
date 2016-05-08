@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   resource :users
+  post '/signup' => 'users#create'
   get '/user/:id' => 'user#show', as: :user
   get '/user/:id/edit' => 'user#edit', as: :edit_user
   patch '/user/:id/' => 'user#update'

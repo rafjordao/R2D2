@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
   
   def create
+    puts "sessio entrei"
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
