@@ -18,12 +18,12 @@
             <form method="post">
                 <div class="form-group">
                     <label for="first_name">Nome</label>
-                    <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="first_name" name="user[first_name]" value="<%=@user.first_name%>" data-error="Digite um nome válido!" require>
+                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="first_name" name="user[first_name]" value="<%=@user.first_name%>" data-error="Digite um nome válido!" require>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Sobrenome</label>
-                    <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="last_name" name="user[last_name]" value="<%=@user.last_name%>" data-error="Digite um nome válido!" require>
+                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="last_name" name="user[last_name]" value="<%=@user.last_name%>" data-error="Digite um nome válido!" require>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">

@@ -6,12 +6,12 @@
    <h2 align="center">Cadastro</h2>
    <div class="form-group">
       <label for="email">Nome:</label>
-      <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="email" name="user[first_name]" data-error="Digite um nome válido!" required>
+      <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="email" name="user[first_name]" data-error="Digite um nome válido!" required>
       <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
       <label for="pwd">Sobre nome:</label>
-      <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="pwd" name="user[last_name]" data-error="Digite um sobrenome válido!" required>
+      <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="pwd" name="user[last_name]" data-error="Digite um sobrenome válido!" required>
       <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
@@ -22,6 +22,7 @@
    <div class="form-group">
       <label for="pwd">Senha:</label>
       <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
+      <div class="help-block">Minimo 6 caracteres!</div>
    </div>
    <div class="form-group">
       <label for="pwd">Confirmar senha:</label>
