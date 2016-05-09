@@ -1,8 +1,12 @@
+<script>
+   $('#new_user').validator();
+</script>
 <div class="container">
 <div class="row">
 <div class="col-md-4 col-md-offset-4">
-<div class="form-body">
-<%= form_for(@user,data:{toggle:"validator"}) do |f| %>
+<fieldset>
+<div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
+<%= form_for(@user,data:{toggle:"validator"},:html=> {:id => 'new_user'}) do |f| %>
    <h2 align="center">Cadastro</h2>
    <div class="form-group">
       <label for="email">Nome:</label>
@@ -10,7 +14,7 @@
       <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
-      <label for="pwd">Sobre nome:</label>
+      <label for="pwd">Sobrenome:</label>
       <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="pwd" name="user[last_name]" data-error="Digite um sobrenome válido!" required>
       <div class="help-block with-errors"></div>
    </div>
@@ -22,7 +26,7 @@
    <div class="form-group">
       <label for="pwd">Senha:</label>
       <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
-      <div class="help-block">Minimo 6 caracteres!</div>
+      <div class="help-block with-errors">Minimo 6 caracteres!</div>
    </div>
    <div class="form-group">
       <label for="pwd">Confirmar senha:</label>
@@ -32,6 +36,7 @@
    <button type="submit" class="btn btn-success btn-lg" style="width:100%">Cadastrar</button
 <% end %>
 </div>
+</fieldset>
 </div>
 </div>
 </div>

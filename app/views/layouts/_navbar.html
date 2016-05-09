@@ -28,7 +28,7 @@
              </div>
                <ul class="nav navbar-nav navbar-right">
                   <% if current_user %> 
-                   <li><%= link_to "Settings", edit_users_path %></li>
+                   <li><a href='/users/edit' id='edit'>Settings</a></li>
                    <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
                    <% else %> 
                    <li><%= link_to "Login", 'login' %></a></li> 
