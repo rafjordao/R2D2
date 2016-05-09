@@ -16,10 +16,13 @@
               <div class="collapse navbar-collapse">
             <div class="apagar">
                 <ul id="nav"class="nav navbar-nav">
-                    <li><%= link_to "Teste", 'Teste' %></a></li> 
-                    <li><%= link_to "Teste", 'Teste' %></a></li> 
-                    <li><%= link_to "Teste", 'Teste' %></a></li> 
-                    <li><%= link_to "Teste", 'Teste' %></a></li> 
+                    <% if current_user %>
+                        <li><%= link_to "Home", 'Teste' %></a></li> 
+                        <li><%= link_to "Chamados", 'Teste' %></a></li> 
+                        <li><%= link_to "Gráfico", 'Teste' %></a></li> 
+                        <li><%= link_to "Sobre o aplicativo", 'Teste' %></a></li>
+                        <li><%= link_to "Contato", 'Teste' %></a></li>
+                    <% end %>
               </ul>
             <!-- Collect the nav links, forms, and other content for toggling -->
              </div>
