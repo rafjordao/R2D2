@@ -1,6 +1,6 @@
-Given(/^I am on the index page$/) do
-    assert_current_path(index_path)
-end
+#Given(/^I am on the index page$/) do
+#    assert_current_path(index_path)
+#end
 
 #When (/^I press the "([^"]*)" button$/) do |text|
 #    click_button(text)
