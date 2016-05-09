@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :users
   post '/signup' => 'users#create'
   post '/users/edit' => 'users#update'
+  patch '/users/edit' => 'users#update'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

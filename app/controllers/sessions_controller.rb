@@ -3,13 +3,13 @@ class SessionsController < ApplicationController
   end
   
   def create
-    puts "sessio entrei"
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Usuário, #{@user.first_name} logado com sucesso!"
       redirect_to '/'
     else
+      flash[:error] = "E-mail e/ou Senha não válidos!"
       redirect_to '/login'
     end 
   end

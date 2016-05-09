@@ -81,8 +81,8 @@
     focus: true,
     custom: {},
     errors: {
-      match: 'Does not match',
-      minlength: 'Not long enough'
+      match: 'Não combinam!',
+      minlength: 'Curto demais!'
     },
     feedback: {
       success: 'glyphicon-ok',
