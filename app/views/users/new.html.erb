@@ -1,27 +1,27 @@
-<br></br>
-<%= form_for(@user) do |f| %>
-<form role="form" >
+<%= form_for(@user,data:{toggle:"validator"}) do |f| %>
    <h2>Log in</h2>
    <div class="form-group">
-      <label for="email">name:</label>
-      <input type="text" class="form-control" id_name="email" name="user[first_name]">
+      <label for="email">Nome:</label>
+      <input type="text" class="form-control" id="email" name="user[first_name]" required>
    </div>
    <div class="form-group">
-      <label for="pwd">sobrenome:</label>
-      <input type="text" class="form-control" id_sobrenome="pwd" sobrenome="user[last_name]">
+      <label for="pwd">Sobre nome:</label>
+      <input type="text" class="form-control" id="pwd" name="user[last_name]">
    </div>
    <div class="form-group">
-      <label for="pwd">email:</label>
-      <input type="email" class="form-control" id_email="pwd"email="user[email]">
+      <label for="pwd">Email:</label>
+      <input type="email" class="form-control" id="pwd" name="user[email]" required>
    </div>
    <div class="form-group">
-      <label for="pwd">senha:</label>
-      <input type="password" class="form-control" id_senha="pwd" senha="user[password]">
+      <label for="pwd">Senha:</label>
+      <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
+      <div class="help-block">Minimo 6 caracteres!</div>
    </div>
    <div class="form-group">
-      <label for="pwd">confirmar_senha:</label>
-      <input type="password" class="form-control" id_confirmar_senha="pwd" confirmar_senha="user[password_confirmation]">
+      <label for="pwd">Confirmar senha:</label>
+      <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Senhas não coincidem!" placeholder="Confirm" name="user[password_confirmation]" required>
+      <div class="help-block with-errors"></div>
    </div>
-   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Log in</button>
-</form>
+   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Log in</button
 <% end %>
+
