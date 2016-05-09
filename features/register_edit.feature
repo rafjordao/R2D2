@@ -4,33 +4,45 @@ Feature: User Register Edit
     In order to update my informations
     
     Background: Start from the index page
-        Given I am on the index page
-        When I press the "Editar Perfil" button
+        Given I am logged in
+        And I am on the index page
+        When I press "Settings"
         Then I should go to edit profile page
         
-    Scenario: Successful editing
-        When I fill in "Nome" with "meu nome"
-        And I fill in "Sobrenome" with "meu sobrenome"
-        And I fill in "e-mail" with "meunovo@email.com"
-        And I fill in "Senha" with "senhanova1234"
-        And I fill in "Confsenha" with "senhanova1234"
-        And I press the "Salvar" button
+    Scenario: Successful name editing
+        When I fill in "user[first_name]" with "meu nome"
+        And I fill in "user[last_name]" with "meu sobrenome"
+        And I fill in "inputPassword_name" with "123456"
+        And I press the "Editar Nome" button
         Then I should see a text "Seus dados foram alterados com sucesso!"
-        And be redirected to the index page
+
+    Scenario: Successful e-mail editing
+        When I press the "mail_edit" tab link
+        And I fill in "user[email]" with "user_edit@cin.ufpe"
+        And I fill in "user[email_confirm]" with "user_edit@cin.ufpe"
+        And I fill in "inputPassword_email" with "123456"
+        And I press the "Editar E-mail" button
+        Then I should see a text "Seus dados foram alterados com sucesso!"
+
+    Scenario: Unsuccesful name editing by password
+        When I fill in "inputPassword_pass" with "meu nome"
+        And I fill in "user[last_name]" with "meu sobrenome"
+        And I fill in "inputPassword_name" with "789012"
+        And I press the "Editar Nome" button
+        Then I should see a text "Senha inválida!"
     
    Scenario: Wrong e-mail format
-        When I fill in "e-mail" with "asdwe.com"
-        Then I should see a text "Porfavor, preencha o campo e-mail com um e-mail válido"
+        When I press the "mail_edit" tab link
+        When I fill in "user[email]" with "asdwe.com"
+        Then I should see a css text "Digite um e-mail válido!"
     
     Scenario: Wrong password format
-        When I fill in "Senha" with "123"
-        Then I should see a text "Senha precisa ter tamanho entre 6 e 16 caracteres"
+        When I press the "pass_edit" tab link
+        When I fill in "inputPassword_pass" with "123"
+        Then I should see a css text "Curto demais!"
         
     Scenario: Password and Password comfirmation not matching
-        When I fill in "Senha" with "senhanova1234"
-        And I fill in "Confsenha" with "senhanova5678"
-        Then I should see a text "O campo senha e confirmar senha precisam estar iguais"
-        
-    Scenario: Empty form
-        When I press the "Salvar" button
-        Then I should see a text "Preencha os campos obrigatórios"
+        When I press the "pass_edit" tab link
+        When I fill in "inputNewPassword" with "senhanova1234"
+        And I fill in "inputNewPasswordConfirm" with "senhanova5678"
+        Then I should see a css text "Senhas não coincidem!"
