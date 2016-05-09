@@ -13,16 +13,24 @@
     <div class="tab-content">
         <div id="sectionA" class="tab-pane fade in active">
         <div class="innter-form">
-            <%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
-            <p></p>
+            <%= form_for(@user, url: edit_users_path,html: {method: "post"}, data:{toggle:"validator"}) do |f| %>
+
             <form method="post">
-            <label>Nome</label>
-            <input type="text" class="form-control" name="user[first_name]">
-            <label>Sobrenome</label>
-            <input type="text" class="form-control" name="user[last_name]">
-            <label>Password</label>
-            <input type="password" class="form-control" name="user[password]">
-            <button type="submit" class="btn btn-success btn-lg">Editar Nome</button>
+                <div class="form-group">
+                    <label for="first_name">Nome</label>
+                    <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="first_name" name="user[first_name]" value="<%=@user.first_name%>" data-error="Digite um nome válido!" require>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Sobrenome</label>
+                    <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="last_name" name="user[last_name]" value="<%=@user.last_name%>" data-error="Digite um nome válido!" require>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Senha:</label>
+                    <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg" style="width:100%">Editar Nome</button>
             </form>
             <% end %>
             </div>
@@ -30,32 +38,47 @@
         </div>
         <div id="sectionB" class="tab-pane fade">
 			
-			<%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
+			<%= form_for(@user, url: edit_users_path,html: {method: "post"}, data:{toggle:"validator"}) do |f| %>
 			<p></p>
             <form method="post">
-            <label>E-mail</label>
-            <input type="text" class="form-control" name="user[email]">
-            <label>Confirmar E-mail</label>
-            <input type="text" class="form-control" name="user[email_confirm]">
-            <label>Password</label>
-            <input type="password" class="form-control" name="user[password]">
-            <button type="submit" class="btn btn-success btn-lg">Editar E-mail</button>
+                 <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="user[email]" value=<%=@user.email%> data-error="Digite um e-mail válido!" required >
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="emailConfirm">Confirmar E-mail</label>
+                    <input type="email" class="form-control" id="emailConfirm" name="user[email]" data-match="#email" data-match-error="E-mails não coincidem!" data-error="Digite um e-mail válido!" required >
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Senha:</label>
+                    <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg" style="width:100%">Editar E-mail</button>
             </form>
             <% end %>
             
         </div>
         <div id="sectionC" class="tab-pane fade">
 			
-			<%= form_for(@user, url: edit_users_path,html: {method: "post"}) do |f| %>
+			<%= form_for(@user, url: edit_users_path,html: {method: "post"}, data:{toggle:"validator"}) do |f| %>
 			<p></p>
             <form method="post">
-            <label>Senha Atual</label>
-            <input type="text" class="form-control" name="user[password]">
-            <label>Nova Senha</label>
-            <input type="text" class="form-control" name="user[new_password]">
-            <label>Confirmar Nova Senha</label>
-            <input type="password" class="form-control" name="user[password_confirmation]">
-            <button type="submit" class="btn btn-success btn-lg">Editar E-mail</button>
+                <div class="form-group">
+                    <label for="inputPassword">Senha:</label>
+                    <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputNewPassword">Nova Senha:</label>
+                    <input type="password" data-minlength="6" class="form-control" id="inputNewPassword" placeholder="Password"  name="user[new_password]" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputNewPasswordConfirm">Confirmar Nova Senha:</label>
+                    <input type="password" data-minlength="6" class="form-control" id="inputNewPasswordConfirm" placeholder="Password"  data-match="#inputNewPassword" data-match-error="Senhas não coincidem!" name="user[new_password_confirmation]" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg" style="width:100%">Editar Senha</button>
             </form>
             <% end %>
             

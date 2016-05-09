@@ -1,27 +1,37 @@
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<div class="form-body">
 <%= form_for(@user,data:{toggle:"validator"}) do |f| %>
-   <h2>Log in</h2>
+   <h2 align="center">Cadastro</h2>
    <div class="form-group">
       <label for="email">Nome:</label>
-      <input type="text" class="form-control" id="email" name="user[first_name]" required>
+      <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="email" name="user[first_name]" data-error="Digite um nome válido!" required>
+      <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
       <label for="pwd">Sobre nome:</label>
-      <input type="text" class="form-control" id="pwd" name="user[last_name]">
+      <input type="text" pattern="^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{1,}$" class="form-control" id="pwd" name="user[last_name]" data-error="Digite um sobrenome válido!" required>
+      <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
       <label for="pwd">Email:</label>
-      <input type="email" class="form-control" id="pwd" name="user[email]" required>
+      <input type="email" class="form-control" id="pwd" name="user[email]" data-error="Digite um e-mail válido!" required>
+      <div class="help-block with-errors"></div>
    </div>
    <div class="form-group">
       <label for="pwd">Senha:</label>
       <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password"  name="user[password]" required>
-      <div class="help-block">Minimo 6 caracteres!</div>
    </div>
    <div class="form-group">
       <label for="pwd">Confirmar senha:</label>
       <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Senhas não coincidem!" placeholder="Confirm" name="user[password_confirmation]" required>
       <div class="help-block with-errors"></div>
    </div>
-   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Log in</button
+   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Cadastrar</button
 <% end %>
+</div>
+</div>
+</div>
+</div>
 
