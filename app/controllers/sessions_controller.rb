@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Usuário, #{@user.first_name} logado com sucesso!"
       redirect_to '/'
     else
+      flash[:error] = "E-mail e/ou Senha não válidos!"
       redirect_to '/login'
     end 
   end
