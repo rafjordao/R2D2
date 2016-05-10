@@ -11,7 +11,7 @@
 <div class="col-md-4 col-md-offset-4">
 <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
     <ul class="nav nav-tabs tab">
-        <li class="active"><a data-toggle="tab" href="#sectionA" id="names_edit">Alterar Nome</a></li>
+        <li class="active"><a data-toggle="tab" href="#sectionA" id="names_edit">Alterar Name</a></li>
         <li><a data-toggle="tab" href="#sectionB" id="mail_edit">Alterar e-mail</a></li>
         <li><a data-toggle="tab" href="#sectionC" id="pass_edit">Alterar Senha</a></li>
     </ul>
@@ -23,12 +23,12 @@
             <form method="post">
                 <div class="form-group">
                     <label for="first_name">Nome</label>
-                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="first_name" name="user[first_name]" value="<%=@user.first_name%>" data-error="Digite um nome válido!" require>
+                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="first_name" name="user[first_name]"  value="<%=@user.first_name%>" data-error="Digite um nome válido!" required>                   
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="last_name">Sobrenome</label>
-                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="last_name" name="user[last_name]" value="<%=@user.last_name%>" data-error="Digite um nome válido!" require>
+                    <input type="text" pattern="^\s*[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ '-]{1,}$" class="form-control" id="last_name" name="user[last_name]" value=<%=@user.last_name%> data-error="Digite um sobrenome válido!" required>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
