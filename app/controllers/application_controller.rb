@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
   def require_user 
     redirect_to '/login' unless current_user 
   end
-end
+  
+  def require_logout
+    redirect_to '/' if current_user
+  end
+  
+end 
