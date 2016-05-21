@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :contacts
   root 'welcome#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   post '/users/edit' => 'users#update'
   patch '/users/edit' => 'users#update'
-  
-
+  get '/chamados' => 'chamado#new'
+  get 'chamado/carregar'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
