@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507100542) do
+ActiveRecord::Schema.define(version: 20160515220847) do
+
+  create_table "bairros", force: :cascade do |t|
+    t.text     "nome_bairro"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "chamados", force: :cascade do |t|
+    t.string "grupo_servico"
+    t.string "servico"
+    t.string "logradouro"
+    t.string "bairro"
+    t.string "situacao"
+    t.date   "data_demanda"
+    t.date   "data_update"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
