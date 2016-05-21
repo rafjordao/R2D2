@@ -1,8 +1,4 @@
- <script>
-   $('#name_edit').validator();
-   $('#email_edit').validator();
-   $('#password_edit').validator();
-</script>
+
 <br></br>
 <br>
 <br>
@@ -12,14 +8,13 @@
 <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
     <ul class="nav nav-tabs tab">
         <li class="active"><a data-toggle="tab" href="#sectionA" id="names_edit">Alterar Name</a></li>
-        <li><a data-toggle="tab" href="#sectionB" id="mail_edit">Alterar e-mail</a></li>
+        <li><a data-toggle="tab" href="#sectionB" onclick="$('#name_edit').validator();" id="mail_edit">Alterar e-mail</a></li>
         <li><a data-toggle="tab" href="#sectionC" id="pass_edit">Alterar Senha</a></li>
     </ul>
     <div class="tab-content">
         <div id="sectionA" class="tab-pane fade in active">
         <div class="innter-form">
-            <%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html=> {:id => 'name_edit',:method=> "post"}) do |f| %>
-
+            <%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html => {:id => 'name_edit',:method=> "post"}) do |f| %>
             <form method="post">
                 <div class="form-group">
                     <label for="first_name">Nome</label>
@@ -42,18 +37,17 @@
             <div class="clearfix"></div>
         </div>
         <div id="sectionB" class="tab-pane fade">
-			
-			<%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html=> {:id => 'email_edit',:method=> "post"}) do |f| %>
+			<%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html => {:id => 'email_edit',:method => "post"}) do |f| %>
 			<p></p>
             <form method="post">
                  <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="user[email]" value=<%=@user.email%> data-error="Digite um e-mail válido!" required >
+                    <input type="email" class="form-control" id="email" name="user[email]" data-error="Digite um e-mail válido!" required>                    
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="emailConfirm">Confirmar E-mail</label>
-                    <input type="email" class="form-control" id="emailConfirm" name="user[email_confirm]" data-match="#email" data-match-error="E-mails não coincidem!" data-error="Digite um e-mail válido!" required >
+                    <input type="email" class="form-control" id="emailConfirm" name="user[email_confirm]" data-match="#email" data-match-error="E-mails não coincidem!" data-error="Digite um e-mail válido!" required>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
@@ -63,11 +57,9 @@
                 <button type="submit" class="btn btn-success btn-lg" style="width:100%">Editar E-mail</button>
             </form>
             <% end %>
-            
         </div>
         <div id="sectionC" class="tab-pane fade">
-			
-			<%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html=> {:id => 'password_edit',:method=> "post"}) do |f| %>
+			<%= form_for(@user, url: edit_users_path, data:{toggle:"validator"},:html => {:id => 'password_edit',:method => "post"}) do |f| %>
 			<p></p>
             <form method="post">
                 <div class="form-group">
@@ -87,10 +79,17 @@
                 <button type="submit" class="btn btn-success btn-lg" style="width:100%">Editar Senha</button>
             </form>
             <% end %>
-            
         </div> 
     </div>
     </div>
     </div>
     </div>
     </div>
+ <script>
+
+   $( document ).ready(function() {
+       $('#email_edit').validator();
+       $('#name_edit').validator();
+    $('#password_edit').validator();
+});
+</script>
