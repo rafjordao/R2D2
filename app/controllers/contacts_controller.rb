@@ -1,4 +1,7 @@
 class ContactsController < ApplicationController
+
+    before_action :require_user, only: [:create,:new]
+
     def new
       @contact = Contact.new
     end

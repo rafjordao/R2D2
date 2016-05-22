@@ -1,4 +1,4 @@
-/*$( document ).ready(function() {
+$( document ).ready(function() {
     var array=[]    
  
         var comboCidades = document.getElementById("combo");
@@ -8,7 +8,7 @@
 
          })
         
-        $("#nav li").click(function() {
+        $("#chamado select").click(function() {
             if($(this).attr('id')=='l2'){
                  for (var i=0;i<array[0].length;i++){
                 $('<option/>').val(array[0][i]).html(array[0][i]).appendTo('#combo');
