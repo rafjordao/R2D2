@@ -7,6 +7,7 @@ class ChamadoController < ApplicationController
       
        #@chamados = Chamado.find_by_sql('select * from chamados limit 10')
     end
+    
     def procurar
          x = Chamado.new(chamado_params)
          puts x
@@ -25,8 +26,6 @@ class ChamadoController < ApplicationController
          render "chamado/new"
     end
     
-    
-    
     def carregarLogradouro
          x = params[:params]
          sql = "select distinct C.logradouro from chamados C where bairro = #{x}"
@@ -38,6 +37,7 @@ class ChamadoController < ApplicationController
         format.json  { render :json => msg } # don't do msg.to_json
      end
     end
+    
     def carregar
        
          bairro = Chamado.select('DISTINCT bairro').map(&:bairro)
