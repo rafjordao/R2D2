@@ -14,6 +14,6 @@ When(/^I press "([^"]*)" radial button$/) do |radio_button|
     choose radio_button
 end
 
-When(/I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
-    select option, from: tag
-end
+#When(/I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
+#    select option, from: tag
+#end
