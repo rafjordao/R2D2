@@ -4,13 +4,14 @@ class ContactsController < ApplicationController
 
     def new
       @contact = Contact.new
+      @user = User.find(current_user.id)
     end
   
     def create
       @contact = Contact.new(params[:contact])
   
      if @contact.valid?
-       ContactMailer.contact_message(params[:contact]).deliver_now
+       ContactMailer.contact_message("watchlurb@gmail.com").deliver_now
        flash[:notice] = 'Mensagem enviado com sucesso'
        redirect_to :action => 'new'
        return  
