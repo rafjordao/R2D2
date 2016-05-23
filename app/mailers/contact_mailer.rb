@@ -1,8 +1,10 @@
 class ContactMailer < ActionMailer::Base
-  default :from => 'watchlurb@gmail.com'
+  
 
   def contact_message(contact)
     @contact = contact
-    mail(:to => 'watchlurb@gmail.com',:subject => 'Mensagem de Contato')
+    puts contact.email
+
+    mail(:from => contact.email ,:to => 'watchlurb@gmail.com',:subject => 'Mensagem de Contato')
   end
 end

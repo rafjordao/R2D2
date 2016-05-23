@@ -11,7 +11,7 @@ Then (/^I should go to chamados page$/) do
 end
 
 When(/^I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
-    select option, from: tag
+    page.has_content?("option[value=#{option}]")
 end
 
 #Then (/^I should see a text "([^"]*)"$/) do |text|
