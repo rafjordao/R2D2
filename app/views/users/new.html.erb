@@ -1,4 +1,6 @@
-<script src="assets/validator.js"></script>
+<script src="assets/javascripts/validator.js">
+   $('#new_user').validator();
+</script>
 <div class="container">
 <div class="row">
 <div class="col-md-4 col-md-offset-4">
@@ -31,7 +33,7 @@
       <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Senhas não coincidem!" placeholder="Confirm" name="user[password_confirmation]" required>
       <div class="help-block with-errors"></div>
    </div>
-   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Cadastrar</button
+   <button type="submit" class="btn btn-success btn-lg" style="width:100%">Cadastrar</button>
 <% end %>
 </div>
 </fieldset>

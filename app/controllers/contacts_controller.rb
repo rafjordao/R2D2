@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   
     def create
       @contact = Contact.new(params[:contact])
-  
+     
      if @contact.valid?
        ContactMailer.contact_message("watchlurb@gmail.com").deliver_now
        flash[:notice] = 'Mensagem enviado com sucesso'

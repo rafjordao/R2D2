@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   patch '/users/edit' => 'users#update'
   get '/chamados' => 'chamado#new'
   get 'chamado/carregar'
-  post '/chamado/procurar'
+  post 'chamado/setLogradouro'=>'chamado#setLogradouro'
+  post '/chamado/procurar' => 'chamado#procurar'
+  post '/chamado/procurarLogradouro' => 'chamado#procurarLogradouro'
   post 'chamado/carregarLogradouro'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

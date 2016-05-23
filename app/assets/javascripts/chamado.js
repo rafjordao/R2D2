@@ -1,18 +1,22 @@
+
 function pesquisar(){
-      var bairro =  $( "#myselect option:selected" ).text();
+      var bairro =  $( "#comboBairro option:selected" ).text();
+      console.log(bairro)
       $.post('chamado/procurar',{ params: JSON.stringify(bairro)},function(data){
          
+        
      })  
+      return "teste"
       }
+
 function changeBairro() {
-    var selectBox = document.getElementById("comboBairro");
+    var selectedBox = $( "#chamado_bairro option:selected" ).text();
+    console.log("changebairro")
     $('#comboLogradouro').empty();
-    var selectedValue = selectBox.options[selectBox.selectedIndex].text;
-     $.post('chamado/carregarLogradouro',{ params: JSON.stringify(selectedValue)},function(data){
-         
-            for (var i=0;i<data.length;i++){
-                $('<option/>').val(data[i]).html(data[i]).appendTo('#comboLogradouro');
-                 } 
+     $.post('chamado/carregarLogradouro',{ params: JSON.stringify(selectedBox)},function(data){
+         for (var i=0;i<data.length;i++){
+               $('#chamado_logradouro').append($('<option>', {value:i, text:data[i].logradouro}));
+           } 
 
      })
    
@@ -21,15 +25,16 @@ function changeBairro() {
 
 $( document ).ready(function() {
     var array=[]  
-    $(':checkbox').checkboxpicker();
-   console.log('teste')
+
         var comboCidades = document.getElementById("combo");
          $.get('chamado/carregar',function(data){
            console.log(data)
            array = data;
+           for (var i=0;i<data.length;i++){
+               $('#comboBairro').append($('<option>', {value:data[i], text:data[i]}));
+           } 
 
          })
-        
-     
+    
     
 });

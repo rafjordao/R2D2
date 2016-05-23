@@ -3,9 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user 
+  helper_method :bairros
+  helper_method :logradouros
 
   def current_user 
     @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+  end
+  def bairros
+    @bairros = @bairros = Chamado.select('DISTINCT bairro').map(&:bairro)
+  end
+  
+  def logradouros
+    @logradouro = Chamado.select('DISTINCT logradouro').map(&:logradouro)
+    
   end
   
   def require_user 

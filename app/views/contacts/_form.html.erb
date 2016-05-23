@@ -1,7 +1,8 @@
+<script src="assets/validator.js"></script>
 <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
 <h4 style="text-align: justify">Para críticas, elogios, dúvidas e outros entre em contato pelo formulário abaixo:</h4>
 
-<%= form_for(@contact) do |f| %>
+<%= form_for(@contact, data:{toggle:"validator"}) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -15,7 +16,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :nome %><br>
     <%= f.text_field :name , :class => "form-control" , :value => "#{@user.first_name} #{@user.last_name}" , :readonly => true %>
   </div>
   <div class="field">
@@ -23,12 +24,14 @@
     <%= f.text_field :email , :class => "form-control" , :value => @user.email , :readonly => true %>
   </div>
   <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject , :class => "form-control" %>
+    <%= f.label :assunto %><br>
+    <%= f.text_field :subject , :class => "form-control", :required => true%>
+    <div class="help-block with-errors"></div>
   </div>
   <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_area :message , :class => "form-control", :style => "max-width: 100%; max-height: 200px;" %>
+    <%= f.label :mensagem %><br>
+    <%= f.text_area :message , :class => "form-control", :style => "max-width: 100%; max-height: 200px;", :required => true%>
+    <div class="help-block with-errors"></div>
   </div>
   <div class="actions">
     <%= f.submit  "Enviar Mensagem" ,:class => "btn btn-success btn-lg", :style => "width: 100%"%>
