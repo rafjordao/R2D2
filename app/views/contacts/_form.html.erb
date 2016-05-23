@@ -1,3 +1,6 @@
+<div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
+<h4 style="text-align: justify">Para críticas, elogios, dúvidas e outros entre em contato pelo formulário abaixo:</h4>
+
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -13,21 +16,22 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , :class => "form-control" , :value => "#{@user.first_name} #{@user.last_name}" , :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email , :class => "form-control" , :value => @user.email , :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject , :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :message %><br>
-    <%= f.text_area :message %>
+    <%= f.text_area :message , :class => "form-control", :style => "max-width: 100%; max-height: 200px;" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  "Enviar Mensagem" ,:class => "btn btn-success btn-lg", :style => "width: 100%"%>
   </div>
 <% end %>
+</div>

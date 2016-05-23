@@ -18,10 +18,10 @@
                 <ul id="nav"class="nav navbar-nav">
                     <% if current_user %>
                         <li><%= link_to "Home", '#' %></a></li> 
-                        <li id="l2"><a href='/chamados'>Chamados</a></li>
+                        <li><a href='/chamados'>Chamados</a></li>
                         <li><%= link_to "Gráfico", '#' %></a></li> 
                         <li><%= link_to "Sobre o aplicativo", '#' %></a></li>
-                        <li><%= link_to "Contato", '#' %></a></li>
+                        <li><a href='/contacts/new'>Contato</a></li>
                     <% end %>
               </ul>
             <!-- Collect the nav links, forms, and other content for toggling -->
