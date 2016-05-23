@@ -1,8 +1,42 @@
-<select id="combo" style='width: 200px'>
-<!--    <option value=""></option>
-    <option value="scs">São Caetano do Sul</option>
-    <option value="sa">Santo André</option>
-    <option value="sbc">São Bernardo do Campo</option> -->
-</select>
+<script src="assets/chamado.js"></script>
 
-<input type="button" id="btnCarregar" value="Carregar combobox" />
+
+
+  <div class="form-group">
+    <select class="form-control" id="comboBairro" onchange="changeBairro()" style='width: 200px'>
+       <option value="1">Option #1</option>
+   <option value="2">Option #2</option>
+  </select>
+  </div>
+  <div class="form-group">
+     <select class="form-control" id="comboLogradouro" style='width: 200px'>
+  </select>
+  </div>
+  <button class="btn btn-default" onclick="pesquisar()">Procurar</button>
+
+<br></br>
+ <table class="table table-striped" style="width: 50%">
+  <thead>
+   <TR>
+    <TH> Serviço </TH>
+    <TH> Bairro </TH>
+    <TH> Logradouro </TH>
+    <TH> Data de Criação </TH>
+    <TH> Situação </TH>
+    <TH> Monitorar </TH>
+  </TR>
+  </thead>
+  <tbody>
+<% @chamados.each do |chamado| %>                    
+    <tr>
+    <td><%=chamado.servico %></td>
+    <td><%=chamado.bairro %></td>
+    <td><%= chamado.logradouro %></td>
+    <td><%= chamado.data_demanda %></td>
+    <td><%= chamado.situacao %></td>
+    <td><%= check_box_tag "listing_featured", "Featured", :value=>1 %></td>
+     </tr>
+<% end %>
+  </tbody>
+</table>
+  

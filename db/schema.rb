@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160515220847) do
 
-  create_table "bairros", force: :cascade do |t|
-    t.text     "nome_bairro"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "chamados", force: :cascade do |t|
     t.string "grupo_servico"
     t.string "servico"
