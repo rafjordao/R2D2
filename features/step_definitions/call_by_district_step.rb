@@ -2,16 +2,21 @@
 #    assert_current_path(index_path)
 #end
 
-#When (/^I press the "([^"]*)" button$/) do |text|
-#    click_button(text)
-#end
+When (/^I press the button with id: "([^"]*)"$/) do |text|
+    page.has_content?(text)
+    @chamados = Chamado.new
+    @chamados.bairro = 'JIQUIA'
+    click_on(text)
+end
+
 
 Then (/^I should go to chamados page$/) do
     assert_current_path(chamados_path)
 end
 
 When(/^I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
-    page.has_content?("option[value=#{option}]")
+    page.has_content?('JIQUIA')
+    page.find_by_id(tag).to have_selector('JIQUIA')
 end
 
 #Then (/^I should see a text "([^"]*)"$/) do |text|

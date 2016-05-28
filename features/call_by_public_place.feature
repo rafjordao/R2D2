@@ -10,7 +10,7 @@ Feature: User view call by public place
 		
 	Scenario: view call by public place
 		When I choose in "Av. Beberibe" from select "Logradouro" 
-		And	I press the "Pesquisar por logradouro" button
+		And	I press the button with id: "procura_logradouro" 
 		Then I should see a text "Serviço"
 		And I should see a text "Data de Criação"
 		And I should see a text "Situação"
