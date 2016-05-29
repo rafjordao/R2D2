@@ -5,15 +5,15 @@
 <%= form_for(@chamado, url: {action: "procurar"}, html: {class: "inline-form"}) do |f| %>
   <div class="form-group col-sm-6">
     <label>Bairro: </label>
-    <%=select_tag "chamado[bairro]", options_for_select(bairros.collect{ |u| [u] }) , :class => "form-control", :style => "width: 150px" %>
-    <button type="submit" class="btn btn-default" id:"procura_chamado">Procurar por bairro</button>
+    <%=select_tag "chamado[bairro]", options_for_select(bairros.collect{ |u| [u] }.append("JIQUIA")) , :class => "form-control", :style => "width: 150px" %>
+    <button type="submit" class="btn btn-default" id="procura_chamado">Procurar por bairro</button>
     </div>
 <% end %>
 <%= form_for(@chamado, url: {action: "procurarLogradouro"}, html: {class: "inline-form"}) do |f| %>
   <div class="form-group col-sm-6">
       <label>Logradouro: </label>
       <%=select_tag "chamado[logradouro]" , options_for_select(logradouros.collect{ |u| [u] }), :class => "form-control" , :style => "width: 150px"%>
-    <button type="submit" class="btn btn-default" id:"procura_logradouro">Procurar por logradouro</button>
+    <button type="submit" class="btn btn-default" id="procura_logradouro">Procurar por logradouro</button>
   </div>
 <% end %>
 </div>
