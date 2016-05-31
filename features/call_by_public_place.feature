@@ -5,12 +5,12 @@ Feature: User view call by public place
 	
 	Background: Start from the index page
 		Given I am on the index page
-		When I press the "Chamados" button 
+		When I press the "Chamados"
 		Then I should go to chamados page
 		
 	Scenario: view call by public place
 		When I choose in "Av. Beberibe" from select "Logradouro" 
-		And	I press the button with id: "procura_logradouro" 
+		And I press the button with id: "procura_logradouro" 
 		Then I should see a text "Serviço"
 		And I should see a text "Data de Criação"
 		And I should see a text "Situação"

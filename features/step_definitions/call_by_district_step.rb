@@ -4,7 +4,7 @@
 
 When (/^I press the button with id: "([^"]*)"$/) do |text|
     page.has_content?(text)
-    @chamado = Chamado.new(bairro: "JIQUIA", servico: "PODA DE ARVORES", data_demanda: '2015-07-06', situacao:'PENDENTE')
+    @chamado = Chamado.new(bairro: "JIQUIA", logradouro: "1TR BEZINHA", servico: "PODA DE ARVORES", data_demanda: '2015-07-06', situacao:'PENDENTE')
     @chamado.save
     click_on(text)
 end
