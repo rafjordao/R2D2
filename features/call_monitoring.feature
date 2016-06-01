@@ -5,11 +5,11 @@ Feature: User call monitoring
 	
 	Background: Start from the index page
 		Given I am on the index page
-		When I press the "Chamados" button 
+		When I press "Chamados"
 		Then I should go to search call page
 		
 	Scenario: monitoring call
-        When I choose in "Av. Cruz Cabugá" from select "Logradouro" 
+        When I choose in "1TR BEZINHA" from select "chamado_logradouro" 
 		And	I press the "Pesquisar por logradouro" button
 		Then I should see a text "Serviço"
 		When I press the checkbox "Monitorar"
