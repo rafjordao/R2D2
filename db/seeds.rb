@@ -8,6 +8,33 @@
 
 require 'csv'
 require 'date'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'bairros.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+i=0
+csv.each do |row|
+       lin = row.to_s
+       b = Bairro.new
+       i=i+1
+       puts i
+       b['nome_bairro']=row['nome_bairro']
+       b.save!
+    #t.nome_bairro = row['nome_bairro']
+end
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'logradouros.csv'))
+csv = CSV.parse(csv_text, :headers => true)
+i=0
+csv.each do |row|
+       lin = row.to_s
+       b = Logradouro.new
+       i=i+1
+       puts i
+       b['nome_logradouro']=row['nome_logradouro']
+       b.save!
+    #t.nome_bairro = row['nome_bairro']
+end
+
 csv_text = File.read(Rails.root.join('lib', 'seeds', '156_cco_2015.csv'))
 csv = CSV.parse(csv_text, :headers => true)
 i=0
@@ -29,6 +56,3 @@ csv.each do |row|
        b.save!
     #t.nome_bairro = row['nome_bairro']
 end
-
-
-
