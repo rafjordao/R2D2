@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id] 
   end
   def bairros
-    @bairros = @bairros = Chamado.select('DISTINCT bairro').map(&:bairro)
+    @bairros = Chamado.select('DISTINCT bairro').map(&:bairro)
   end
   
   def logradouros

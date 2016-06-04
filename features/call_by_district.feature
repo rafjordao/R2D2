@@ -11,7 +11,7 @@ Feature: User view call by  district
 		
 	Scenario: view called by district
 		When I choose in "JIQUIA" from select "chamado_bairro"
-		And I press the button with id: "Procurar por bairro"
+		And I press the button with id: "procura_chamado"
 		Then I should see a text "PODA DE ARVORES"
 		And I should see a text "2015-07-06"
 		And I should see a text "PENDENTE"
