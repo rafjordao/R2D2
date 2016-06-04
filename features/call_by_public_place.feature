@@ -4,7 +4,8 @@ Feature: User view call by public place
 	In order to view its calls
 	
 	Background: Start from the index page
-		Given I am on the index page
+		Given I am logged in
+        And I am on the index page
 		When I press "Chamados"
 		Then I should go to chamados page
 		
