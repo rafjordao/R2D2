@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post '/chamado/procurarLogradouro_cb_ex' => 'chamado#desMonitorar'
   
   
+  get '/chamado/historico' => 'chamado#historico'
+  
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

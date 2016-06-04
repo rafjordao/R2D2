@@ -60,7 +60,7 @@
     <tr>
     <td><%=chamado.servico %></td>
     <td><%=chamado.bairro %></td>
-    <td><%= chamado.logradouro %></td>
+    <td><%= link_to chamado.logradouro, {:controller => "chamado", :action => "historico", :logradouro => chamado.logradouro }%></td>
     <td><%= chamado.data_demanda %></td>
     <td><%= chamado.situacao %></td>
     <%if chamado.id_user == current_user.id%>

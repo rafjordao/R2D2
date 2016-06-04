@@ -36,6 +36,10 @@ class ChamadoController < ApplicationController
         end
     end
     
+    def historico
+        puts "dddddddddddddddddddddddddddddddd"
+    end
+    
     def procurarLogradouro
         x = Chamado.new(chamado_params)
         if params[:commit] == 'Pesquisar por Logradouro'
