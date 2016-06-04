@@ -12,7 +12,13 @@ Then (/^I should go to chamado page$/) do
 end
 
 When (/^I press the checkbox "Monitorar"$/) do
-    check()
+    check('Monitorar')
+    @monitorar = Monitorando.new(id_user: 1, id_chamado: 1, bairro: "JIQUIA", logradouro: "1TR BEZINHA")
+    @monitorar.save
+end
+
+When (/^I press Home$/) do
+   visit(root_path)
 end
 
 #Then (/^I should see a text "([^"]*)"$/) do |text|

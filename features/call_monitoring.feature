@@ -14,8 +14,7 @@ Feature: User call monitoring
 		And I press the button with id: "procura_logradouro"
 		Then I should see a text "Serviço"
 		When I press the checkbox "Monitorar" 
-		And I press the "Home" button
-		Then I should go to index page
-		And I should see a text "Av. Cruz Cabugá"
+		And I press Home
+		Then I should see a text "1TR BEZINHA"
 		
 		
