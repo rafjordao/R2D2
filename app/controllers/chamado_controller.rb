@@ -1,5 +1,7 @@
 class ChamadoController < ApplicationController
     
+    before_action :require_user
+    
     def new
         @chamados = []
         @chamado = Chamado.new
@@ -9,21 +11,55 @@ class ChamadoController < ApplicationController
     end
     
     def procurar
-         x = Chamado.new(chamado_params)
-         puts x
-         sql = "select * from chamados where bairro = '#{x.bairro}'"
-         @chamados = Chamado.find_by_sql(sql)
-         @chamado = Chamado.new
-         render "chamado/new"
+        puts params
+        x = Chamado.new(chamado_params)
+        if params[:commit] == 'Pesquisar por Bairro'
+            sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.bairro = '#{x.bairro}' "
+            @chamados = Chamado.find_by_sql(sql)
+            @chamado = Chamado.new
+            render "chamado/new"
+        elsif params[:commit] == 'Monitorar Bairro'
+            sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.bairro = '#{x.bairro}' "
+            @chamados = Chamado.find_by_sql(sql)
+            @chamados.each do |c|
+                if c.id_user != current_user.id
+                    m=Monitorando.new
+                    m['id_user'] = current_user.id
+                    m['id_chamado'] = c.id
+                    m['bairro'] = c.bairro
+                    m['logradouro'] = c.logradouro
+                    m.save!
+                end
+            end
+            flash[:success] = "O bairro #{x.bairro} está sendo monitorado com sucesso!"
+            redirect_to '/'
+        end
     end
     
     def procurarLogradouro
-         x = Chamado.new(chamado_params)
-         puts x
-         sql = "select * from chamados where logradouro = '#{x.logradouro}'"
-         @chamados = Chamado.find_by_sql(sql)
-         @chamado = Chamado.new
-         render "chamado/new"
+        x = Chamado.new(chamado_params)
+        if params[:commit] == 'Pesquisar por Logradouro'
+            sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.logradouro = '#{x.logradouro}'"
+            @chamados = Chamado.find_by_sql(sql)
+            puts @chamados.to_yaml
+            @chamado = Chamado.new
+            render "chamado/new"
+        elsif params[:commit] == 'Monitorar Logradouro'
+            sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.logradouro = '#{x.logradouro}'"
+            @chamados = Chamado.find_by_sql(sql)
+            @chamados.each do |c|
+                if c.id_user != current_user.id
+                    m=Monitorando.new
+                    m['id_user'] = current_user.id
+                    m['id_chamado'] = c.id
+                    m['bairro'] = c.bairro
+                    m['logradouro'] = c.logradouro
+                    m.save!
+                end
+            end
+            flash[:success] = "O logradouro #{x.logradouro} está sendo monitorado com sucesso!"
+            redirect_to '/'
+        end
     end
     
     def carregarLogradouro
@@ -54,13 +90,45 @@ class ChamadoController < ApplicationController
         respond_to do |format|
         msg = 
         format.json  { render :json => msg } # don't do msg.to_json
+        end
+    end
+    
+    def monitorar
+        puts "Entrou"
+        x = params[:params]
+        x = x.split(',')
+        puts x[0]
+        puts x[1]
+        puts x[2]
+        m = Monitorando.new
+        m['id_user'] = current_user.id
+        m['id_chamado'] = x[0].to_i
+        m['bairro'] = x[1]
+        m['logradouro'] = x[2]
+        #puts m.to_yaml
+        m.save!
+        respond_to do |format|
+        msg = ['fwfw']
+        format.json  { render :json => msg } # don't do msg.to_json
      end
     end
-
+    
+    def desMonitorar
+        x = params[:params]
+        x = x.split(',')
+        puts x[0]
+        Monitorando.where(id_user: current_user.id, id_chamado: x[0].to_i).destroy_all
+       
+        #ActiveRecord::Base.connection.execute('delete from ')
+        respond_to do |format|
+        msg = ['fwfw']
+        format.json  { render :json => msg } # don't do msg.to_json
+    end
+    end
     
     private 
         def chamado_params 
-            params.require(:chamado).permit(:bairro, :logradouro)
+            params.require(:chamado).permit(:bairro, :logradouro,:params)
         end 
     
 end
