@@ -5,17 +5,18 @@ Feature: Login
   
     Scenario: Successful login using system register
         Given I am not authenticated
-        When I fill in "e-mail" with "meu@e-mail.com"
-        And I fill in "Senha" with "minhasenha1234"
+        When I fill in "session[email]" with "user@cin.ufpe.br"
+        And I fill in "session[password]" with "123456"
         And I press the "Fazer Login" button
-        Then I am redirected to "/index"
+        Then I should see a text "Usuário, first_name logado com sucesso!"
+        Then be redirected to the index page
     
     Scenario: Unsuccessful login using system register
         Given I am not authenticated
-        When I fill in "e-mail" with "asde.com"
-        And I fill in "Senha" with "asdasdasd"
+        When I fill in "session[email]" with "asde@abc.com"
+        And I fill in "session[password]" with "asdasdasd"
         And I press the "Fazer Login" button
-        Then I should see a text "Login ou Senha incorretos"
+        Then I should see a text "E-mail e/ou Senha não válidos!"
     
     Scenario: Successful login using google+
 
