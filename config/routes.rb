@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   post '/chamado/procurar' => 'chamado#procurar'
   post '/chamado/procurarLogradouro' => 'chamado#procurarLogradouro'
   post 'chamado/carregarLogradouro'
+  put 'chamado/procurar/monitorar' => 'chamado#monitorar'
+  
+  post '/chamado/procurar_cb' => 'chamado#monitorar'
+  post '/chamado/procurar_cb_ex' => 'chamado#desMonitorar'
+  post '/chamado/procurarLogradouro_cb' => 'chamado#monitorar'
+  post '/chamado/procurarLogradouro_cb_ex' => 'chamado#desMonitorar'
+  
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
