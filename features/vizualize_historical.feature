@@ -4,12 +4,14 @@ Feature: vizualize historical
     In order to show all last open calls for certain public place, using the date.
     
     Background: Start from the index page
-        Given I am on the index page
-        When I press the "chamado" button
-        Then I should go to chamado page
+		Given I am logged in
+        And I am on the index page
+		When I press "Chamados"
+		Then I should go to chamados page
     
     Scenario: Successful vizualize historical
-      When I press "Av. Beberibe" in Logradouro
+      When I choose in "1TR BEZINHA" from select "chamado_logradouro"
+      Then I should see a text "1TR BEZINHA"
       Then I should go to historico_chamado page
       And I fill in "de_data" with "12/03/2016"
       And I fill in "ate_data" with "30/04/2016"

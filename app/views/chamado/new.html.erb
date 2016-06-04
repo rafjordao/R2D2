@@ -66,7 +66,7 @@
     <%if chamado.id_user == current_user.id%>
     <td><input checked value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> type="checkbox" onchange="toggleCheckbox(this)"></td>
     <%else%>
-    <td><input value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> type="checkbox" onchange="toggleCheckbox(this)"></td>
+    <td><input value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> id="Monitorar" type="checkbox" onchange="toggleCheckbox(this)"></td>
     <%end%>
      </tr>
 <% end %>
