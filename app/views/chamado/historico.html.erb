@@ -1,0 +1,203 @@
+<div style=" width: 100%;
+  text-align: center;">
+<div class="form-inline">
+    
+<%= form_for(@chamado, url: {action: "historico"}, html: {class: "inline-form"}) do |f| %>
+    <div class="form-group">
+  
+   <div class="form-group">
+    <label for="exampleInputName2">Logradouro: </label>
+   </div>
+   <div class="form-group">
+    <label for="exampleInputName2"><%=params[:logradouro]%>  </label>
+   </div>
+  <div class="form-group">
+    <input type="text" data-provide='datepicker' >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputName2">até: </label>
+  </div>
+  <div class="form-group">
+   <input type="text" data-provide='datepicker' >
+  </div>
+   <div class="form-group">
+     <%= f.submit "Pesquisar", :id => "monitorar_bairro", :class => "btn btn-info" %>
+  </div>
+    </div>
+<% end %>
+</div>
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px"></div>
+ <table class="table table-striped" style="width: 100%">
+  <thead>
+   <TR>
+    <TH> Serviço </TH>
+    <TH> Bairro </TH>
+    <TH> Logradouro </TH>
+    <TH> Data de Criação </TH>
+    <TH> Situação </TH>
+    <TH> Monitorar </TH>
+  </TR>
+  </thead>
+  <tbody  id="myTable">
+<% @chamados.each do |chamado| %>  
+    
+    <tr>
+    <td><%=chamado.servico %></td>
+    <td><%=chamado.bairro %></td>
+    <td><%= link_to chamado.logradouro, {:controller => "chamado", :action => "historico", :logradouro => chamado.logradouro }%></td>
+    <td><%= chamado.data_demanda %></td>
+    <td><%= chamado.situacao %></td>
+    <%if chamado.id_user == current_user.id%>
+    <td><input checked value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> type="checkbox" onchange="toggleCheckbox(this)"></td>
+    <%else%>
+    <td><input value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> id="Monitorar" type="checkbox" onchange="toggleCheckbox(this)"></td>
+    <%end%>
+     </tr>
+<% end %>
+  </tbody>
+</table>
+ <div class="col-md-12 text-center">
+      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+	</div>
+</div>
+</div>
+</div>
+<script>
+  $.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 7,
+            showPrevNext: false,
+            hidePageNumbers: false
+        },
+        settings = $.extend(defaults, opts);
+    
+    var listElement = $this;
+    var perPage = settings.perPage; 
+    var children = listElement.children();
+    var pager = $('.pager');
+    
+    if (typeof settings.childSelector!="undefined") {
+        children = listElement.find(settings.childSelector);
+    }
+    
+    if (typeof settings.pagerSelector!="undefined") {
+        pager = $(settings.pagerSelector);
+    }
+    
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems/perPage);
+
+    pager.data("curr",0);
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+    }
+    
+    var curr = 0;
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+        $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+        curr++;
+    }
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+    }
+    
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+        pager.find('.next_link').hide();
+    }
+  	pager.children().eq(1).addClass("active");
+    
+    children.hide();
+    children.slice(0, perPage).show();
+    
+    pager.find('li .page_link').click(function(){
+        var clickedPage = $(this).html().valueOf()-1;
+        goTo(clickedPage,perPage);
+        return false;
+    });
+    pager.find('li .prev_link').click(function(){
+        previous();
+        return false;
+    });
+    pager.find('li .next_link').click(function(){
+        next();
+        return false;
+    });
+    
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        goTo(goToPage);
+    }
+     
+    function next(){
+        goToPage = parseInt(pager.data("curr")) + 1;
+        goTo(goToPage);
+    }
+    
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+        
+        children.css('display','none').slice(startAt, endOn).show();
+        
+        if (page>=1) {
+            pager.find('.prev_link').show();
+        }
+        else {
+            pager.find('.prev_link').hide();
+        }
+        
+        if (page<(numPages-1)) {
+            pager.find('.next_link').show();
+        }
+        else {
+            pager.find('.next_link').hide();
+        }
+        
+        pager.data("curr",page);
+      	pager.children().removeClass("active");
+        pager.children().eq(page+1).addClass("active");
+    
+    }
+};
+function some_div(){
+   $("#alerta").css('visibility', 'hidden');
+}
+ function toggleCheckbox(element)
+ { 
+   if(element.checked == true){
+     console.log('monitorar')
+     $.post('/chamado/procurar_cb',{ params: element.value},function(data){
+          console.log('fdwfwf');
+          $("#alerta").css('visibility', 'visible');
+          setTimeout(some_div, 1200)
+          
+     })
+    
+   }else{
+      $.post('/chamado/procurarLogradouro_cb_ex',{ params: element.value},function(data){
+          console.log('fdwfwf');
+         $("#alerta").css('visibility', 'visible');
+          setTimeout(some_div, 1200)
+     })
+     
+   }
+  
+ };
+ 
+ 
+$( document ).ready(function() {
+   
+$('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:50});
+
+    
+});  
+
+
+</script>
