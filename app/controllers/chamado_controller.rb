@@ -11,7 +11,6 @@ class ChamadoController < ApplicationController
     end
     
     def procurar
-        puts params
         x = Chamado.new(chamado_params)
         if params[:commit] == 'Pesquisar por Bairro'
             sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.bairro = '#{x.bairro}' "
@@ -50,9 +49,6 @@ class ChamadoController < ApplicationController
         @chamado['logradouro'] = params[:chamado]['logradouro']
         @chamados = Chamado.find_by_sql("select * from chamados where data_demanda between date('#{ano}-#{mes}-#{dia}') and date('#{anof}-#{mesf}-#{diaf}') and logradouro = '#{params[:chamado]['logradouro']}'")
         
-        
-        puts @chamados.to_yaml
-        
         rescue
         @chamado['logradouro'] = params[:logradouro]
         
@@ -68,7 +64,6 @@ class ChamadoController < ApplicationController
         if params[:commit] == 'Pesquisar por Logradouro'
             sql = "select C.*,M.id_user,M.id_chamado from chamados C left outer join monitorandos M on M.id_user = '#{current_user.id}' and M.id_chamado=C.id where C.logradouro = '#{x.logradouro}'"
             @chamados = Chamado.find_by_sql(sql)
-            puts @chamados.to_yaml
             @chamado = Chamado.new
             render "chamado/new"
         elsif params[:commit] == 'Monitorar Logradouro'

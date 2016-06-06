@@ -21,3 +21,7 @@ end
 #Then(/^I should see a text "([^"]*)"$/) do |text|
 #    expect(page).to have_content(text)
 #end
+
+Then(/^I should go to chamado_historico page$/) do
+    assert_current_path("/chamado/historico?logradouro=1TR+BEZINHA")
+end
