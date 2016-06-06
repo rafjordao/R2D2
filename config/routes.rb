@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   
   
   get '/chamado/historico' => 'chamado#historico'
+  post '/chamado/historico' => 'chamado#historico'
   
   
   

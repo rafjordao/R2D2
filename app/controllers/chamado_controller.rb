@@ -37,8 +37,31 @@ class ChamadoController < ApplicationController
     end
     
     def historico
-        puts "dddddddddddddddddddddddddddddddd"
+        
+        @chamado = Chamado.new
+        begin
+        dia = params[:chamado][:inicio][3..4] 
+        mes = params[:chamado][:inicio][0..1] 
+        ano = params[:chamado][:inicio][6..9]
+        
+        diaf = params[:chamado][:fim][3..4] 
+        mesf = params[:chamado][:fim][0..1] 
+        anof = params[:chamado][:fim][6..9]
+        @chamado['logradouro'] = params[:chamado]['logradouro']
+        @chamados = Chamado.find_by_sql("select * from chamados where data_demanda between date('#{ano}-#{mes}-#{dia}') and date('#{anof}-#{mesf}-#{diaf}') and logradouro = '#{params[:chamado]['logradouro']}'")
+        
+        
+        puts @chamados.to_yaml
+        
+        rescue
+        @chamado['logradouro'] = params[:logradouro]
+        
+        @chamados = []
+        end
+        
+        
     end
+    
     
     def procurarLogradouro
         x = Chamado.new(chamado_params)
