@@ -4,21 +4,20 @@
     
 <%= form_for(@chamado, url: {action: "historico"}, html: {class: "inline-form"}) do |f| %>
     <div class="form-group">
-  
    <div class="form-group">
     <label for="exampleInputName2">Logradouro: </label>
    </div>
    <div class="form-group">
-    <label for="exampleInputName2"><%=params[:logradouro]%>  </label>
+    <%= f.text_field :logradouro , :class => "form-control" , :style => "width: 350px", :value => "#{@chamado['logradouro']}" , :readonly => true %>
    </div>
   <div class="form-group">
-    <input type="text" data-provide='datepicker' >
+    <input name="chamado[inicio]" type="text" data-provide='datepicker' >
   </div>
   <div class="form-group">
     <label for="exampleInputName2">até: </label>
   </div>
   <div class="form-group">
-   <input type="text" data-provide='datepicker' >
+   <input name="chamado[fim]"type="text" data-provide='datepicker' >
   </div>
    <div class="form-group">
      <%= f.submit "Pesquisar", :id => "monitorar_bairro", :class => "btn btn-info" %>
@@ -32,11 +31,8 @@
   <thead>
    <TR>
     <TH> Serviço </TH>
-    <TH> Bairro </TH>
-    <TH> Logradouro </TH>
     <TH> Data de Criação </TH>
     <TH> Situação </TH>
-    <TH> Monitorar </TH>
   </TR>
   </thead>
   <tbody  id="myTable">
@@ -44,15 +40,9 @@
     
     <tr>
     <td><%=chamado.servico %></td>
-    <td><%=chamado.bairro %></td>
-    <td><%= link_to chamado.logradouro, {:controller => "chamado", :action => "historico", :logradouro => chamado.logradouro }%></td>
     <td><%= chamado.data_demanda %></td>
     <td><%= chamado.situacao %></td>
-    <%if chamado.id_user == current_user.id%>
-    <td><input checked value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> type="checkbox" onchange="toggleCheckbox(this)"></td>
-    <%else%>
-    <td><input value = <%="#{chamado.id},#{chamado.bairro},#{chamado.logradouro}"%> id="Monitorar" type="checkbox" onchange="toggleCheckbox(this)"></td>
-    <%end%>
+  
      </tr>
 <% end %>
   </tbody>
@@ -194,7 +184,7 @@ function some_div(){
  
 $( document ).ready(function() {
    
-$('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:50});
+$('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:25});
 
     
 });  
