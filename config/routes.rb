@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   get '/chamado/historico' => 'chamado#historico'
   post '/chamado/historico' => 'chamado#historico'
   
-  
+  get '/auth/:provider/callback', to: 'sessions#createG'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroyG', as: 'signout'
+
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

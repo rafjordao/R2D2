@@ -63,7 +63,9 @@ class UsersController < ApplicationController
        params[:user][:password]=params[:user][:new_password]
        params[:user].except!(:new_password)
     end
-
+    
+    
+    
     private 
         def user_params 
             params.require(:user).permit(:first_name, :last_name, :email, :password, :new_password)

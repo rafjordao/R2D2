@@ -21,4 +21,16 @@ class SessionsController < ApplicationController
     flash[:success] = "logout"
     redirect_to '/' 
   end
+  
+  def createG
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_path
+  end
+
+  def destroyG
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+  
 end
