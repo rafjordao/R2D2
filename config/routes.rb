@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   get '/chamado/historico' => 'chamado#historico'
   post '/chamado/historico' => 'chamado#historico'
   
-  
+  get '/grafico' => 'graph#new'
+  post '/grafico/procurar' => 'graph#procurar'
+  post '/grafico/procurarGeral' => 'graph#procurarGeral'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

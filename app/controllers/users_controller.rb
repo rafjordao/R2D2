@@ -38,9 +38,6 @@ class UsersController < ApplicationController
     end
          
     def create 
-
-        puts params[:user][:password] == params[:user][:password_confirmation]
-        
         
         usuario = User.find_by_email(params[:user][:email])
 
