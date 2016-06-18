@@ -1,0 +1,118 @@
+<div class="container">
+	<div class="row" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
+		<div class="col-md-30" style="padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+			<div class="form-inline">
+				<div class="col-md-12 col-md-offset-2">
+					<div class="row" style="float:none">
+					<label class="radio-inline">
+					  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="setGraphAll()" onclick="toggle(true)" checked> Gráfico Geral
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onclick="toggle(false)">
+					</label>
+					<%=select_tag "bairro", options_for_select(bairros.collect{ |u| [u] }.append("JIQUIA")) , :class => "form-control", :style => "width: 50%; float:none", :onChange => "setGraph(this.value)", :disabled => true%>
+					</div>
+				</div>
+				<div class="row" style="width: 100%">
+					<div id="pie" class="col-md-6 col-md-offset-2" style="text-size: 14px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="assets/d3.v3.min.js"></script>
+<script src="assets/Donut3D.js"></script>
+<script>
+
+
+
+
+	var pie = new d3pie("pie", {
+		header: {
+			title: {
+				text: "Gráfico Geral",
+				fontSize: 20
+			},
+			location: "pie-center"
+		},
+		size: {
+		    pieInnerRadius: "70%"
+  		},
+		data: {
+			content: [
+				{ label: "", value: 0 }
+			]
+		}
+	});
+
+	$.post('grafico/procurarGeral',{ params: JSON.stringify("")},function(d){	
+    		j =  d.length
+    		k=0
+    		data=[]
+			for(var i=0; i<d.length; i++){
+				k=k+1
+				data.push({
+        		label: d[i].situacao,
+        		value: d[i].qtd,
+			})
+			if (j==k){
+						
+				pie.updateProp("data.content", data);
+			}
+		};
+	})
+
+function setGraphAll() {
+	$.post('grafico/procurarGeral',{ params: JSON.stringify("")},function(d){	
+    	j =  d.length
+    	k=0
+    	data=[]
+		for(var i=0; i<d.length; i++){
+			k=k+1
+			data.push({
+        	label: d[i].situacao,
+        	value: d[i].qtd
+		})
+		
+		if (j==k){
+			
+			pie.updateProp("data.content", data);
+			pie.updateProp("header.title.text", "Gráfico Geral");
+		}
+      };
+      
+      
+
+     })
+}
+
+
+function setGraph(bairro) {
+	var i=-1;
+    $.post('grafico/procurar',{ params: JSON.stringify(bairro)},function(d){
+    	console.log(d);
+    	j =  d.length
+    	k=0
+    	data=[]
+		for(var i=0; i<d.length; i++){
+			k=k+1
+			data.push({
+        	label: d[i].situacao,
+        	value: d[i].qtd
+		})
+		
+		if (j==k){
+			
+			pie.updateProp("data.content", data);
+			pie.updateProp("header.title.text", bairro);
+		}
+	};
+
+	})
+}
+
+function toggle(bool) {
+	document.getElementById("bairro").disabled = bool;
+}
+
+</script>

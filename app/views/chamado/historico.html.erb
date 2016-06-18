@@ -1,58 +1,61 @@
-<div style=" width: 100%;
-  text-align: center;">
-<div class="form-inline">
-    
-<%= form_for(@chamado, url: {action: "historico"}, html: {class: "inline-form"}) do |f| %>
-    <div class="form-group">
-   <div class="form-group">
-    <label for="exampleInputName2">Logradouro: </label>
-   </div>
-   <div class="form-group">
-    <%= f.text_field :logradouro , :class => "form-control" , :style => "width: 350px", :value => "#{@chamado['logradouro']}" , :readonly => true %>
-   </div>
-  <div class="form-group">
-    <input name="chamado[inicio]" type="text" data-provide='datepicker' >
-  </div>
-  <div class="form-group">
-    <label for="exampleInputName2">até: </label>
-  </div>
-  <div class="form-group">
-   <input name="chamado[fim]"type="text" data-provide='datepicker' >
-  </div>
-   <div class="form-group">
-     <%= f.submit "Pesquisar", :id => "monitorar_bairro", :class => "btn btn-info" %>
-  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+            <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
+                <div style=" width: 100%; text-align: center;">
+                    <div class="form-inline">
+                        <%= form_for(@chamado, url: {action: "historico"}, html: {class: "inline-form"}) do |f| %>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="exampleInputName2">Logradouro: </label>
+                                </div>
+                                <div class="form-group">
+                                    <%= f.text_field :logradouro , :class => "form-control" , :style => "width: 350px", :value => "#{@chamado['logradouro']}" , :readonly => true %>
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <input class="form-control" name="chamado[inicio]" type="text" data-provide='datepicker' >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName2">até: </label>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="chamado[fim]"type="text" data-provide='datepicker' >
+                                </div>
+                                &nbsp;
+                                &nbsp;
+                                <div class="form-group">
+                                    <%= f.submit "Pesquisar", :id => "procurar_historico", :class => "btn btn-info" %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="row" style="margin-top: 20px; margin-bottom: 20px"></div>
+                    <table class="table table-striped" style="width: 55%">
+                        <thead>
+                            <TR>
+                                <TH> Serviço </TH>
+                                <TH> Data de Criação </TH>
+                                <TH> Situação </TH>
+                            </TR>
+                        </thead>
+                        <tbody  id="myTable">
+                            <% @chamados.each do |chamado| %>  
+                            <tr>
+                                <td><%=chamado.servico %></td>
+                                <td><%= chamado.data_demanda %></td>
+                                <td><%= chamado.situacao %></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<% end %>
-</div>
-
-<div class="row" style="margin-top: 20px; margin-bottom: 20px"></div>
- <table class="table table-striped" style="width: 100%">
-  <thead>
-   <TR>
-    <TH> Serviço </TH>
-    <TH> Data de Criação </TH>
-    <TH> Situação </TH>
-  </TR>
-  </thead>
-  <tbody  id="myTable">
-<% @chamados.each do |chamado| %>  
-    
-    <tr>
-    <td><%=chamado.servico %></td>
-    <td><%= chamado.data_demanda %></td>
-    <td><%= chamado.situacao %></td>
-  
-     </tr>
-<% end %>
-  </tbody>
-</table>
- <div class="col-md-12 text-center">
-      <ul class="pagination pagination-lg pager" id="myPager"></ul>
-      </div>
-	</div>
-</div>
-</div>
 </div>
 <script>
   $.fn.pageMe = function(opts){
