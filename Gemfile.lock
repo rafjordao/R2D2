@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 1b0a7189da82daab9ccd96f5f106c4d0ca869d6b
+  specs:
+    bootstrap-datepicker-rails (1.6.1.1)
+      railties (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -127,6 +134,11 @@ GEM
       rack (>= 1.0, < 3)
     omniauth-facebook (3.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (0.4.0)
+      jwt (~> 1.5.0)
+      multi_json (~> 1.3)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.3.1)
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -220,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
+  bootstrap-datepicker-rails!
   bootstrap-sass (~> 3.2.0)
   byebug
   capybara
@@ -230,6 +243,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
+  omniauth-google-oauth2
   pg (= 0.17.1)
   rails (= 4.2.5)
   rspec-rails
@@ -242,4 +256,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.1
+   1.12.5
