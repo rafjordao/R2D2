@@ -7,10 +7,7 @@
 					<label class="radio-inline">
 					  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="setGraphAll()" onclick="toggle(true)" checked> Gráfico Geral
 					</label>
-					<label class="radio-inline">
-					  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onclick="toggle(false)">
-					</label>
-					<%=select_tag "bairro", options_for_select(bairros.collect{ |u| [u] }.append("JIQUIA")) , :class => "form-control", :style => "width: 50%; float:none", :onChange => "setGraph(this.value)", :disabled => true%>
+					<%=select_tag "graph[bairro]", options_for_select(bairros.collect{ |u| [u] }.append("JIQUIA")) , :class => "form-control", :style => "width: 50%; float:none", :onChange => "setGraph(this.value)", :onFocus => "toggle(false)" %>
 					</div>
 				</div>
 				<div class="row" style="width: 100%">
@@ -111,8 +108,12 @@ function setGraph(bairro) {
 	})
 }
 
-function toggle(bool) {
-	document.getElementById("bairro").disabled = bool;
+function toggle(bool){
+	$('input[id="inlineRadio1"]').attr('checked',bool);
 }
+
+//function toggle(bool) {
+//	document.getElementById("graph_bairro").disabled = bool;
+//}
 
 </script>
