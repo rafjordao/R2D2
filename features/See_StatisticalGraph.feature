@@ -4,16 +4,15 @@ Feature: statical graph
     In order to have control services of Emlurb
     
         Background: Start from the contato page
-            Given I am on the index page
-            When I press the "gráfico" button
+            Given I am logged in
+            And I am on the index page
+            When I press "Gráfico"
             Then I should go to grafico page
             
         Scenario: Successful seeing the graph for total
-            When I press "Formar gráfico" button
-            Then I should see a Statistical Graph
-          
+            When I press "inlineRadio1" radial button
+            Then I should see a Statistical Graph named "Gráfico Geral"
+            
         Scenario: Successful seeing the graph for district
-            When I press "Por bairro" radial button
-            And I choose in "Encruzilhada" from select "Bairro"
-            And I press "Formar gráfico" button
-            Then I should see a Statistical Graph
+            When I choose in "JIQUIA" from select "graph_bairro"
+            Then I should see a Statistical Graph named "JIQUIA"

@@ -14,9 +14,9 @@ end
 
 When(/^I choose in "([^"]*)" from select "([^"]*)"$/) do |option,tag|
     #page.has_content?('JIQUIA')
-    select(option, :from => tag)
     @chamado = Chamado.new(bairro: "JIQUIA", logradouro: "1TR BEZINHA", servico: "PODA DE ARVORES", data_demanda: '2015-07-06', situacao:'PENDENTE')
     @chamado.save
+    select(option, :from => tag)
 end
 
 #Then (/^I should see a text "([^"]*)"$/) do |text|
