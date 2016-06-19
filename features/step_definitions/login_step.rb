@@ -17,3 +17,11 @@ end
 Then(/^I should see a text "([^"]*)"$/) do |text|
     expect(page).to have_content(text)
 end
+
+Then(/^I should be redirected to "([^"]*)" login page$/) do |provider|
+    visit("/auth/#{provider.downcase}")
+end
+
+Then(/^be redirected to login page$/) do
+    assert_current_path(login_path)
+end
