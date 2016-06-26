@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   post '/grafico/procurar' => 'graph#procurar'
   post '/grafico/procurarGeral' => 'graph#procurarGeral'
   
+  get '/sobrenos' => 'aboutus#new'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
