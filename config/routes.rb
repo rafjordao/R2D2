@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   post '/grafico/procurar' => 'graph#procurar'
   post '/grafico/procurarGeral' => 'graph#procurarGeral'
   
+  get '/pass_recovery' => 'pass_recovery#new'
+  post '/pass_recovery' => 'pass_recovery#sends'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
