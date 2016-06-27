@@ -1,7 +1,27 @@
+<style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #mapa { height: 400px}
+    </style>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+
+  var map;
+  function initMap() {
+  map = new google.maps.Map(document.getElementById('mapa'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+  });
+}
+
+window.onload = function(e){ 
+    initMap();
+}
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
-            <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%;">
+            <div class="form-body" style="background: rgb(243, 243, 243) none repeat scroll 0% 0%; height: 670px">
                 <div style=" width: 100%; text-align: center;">
                     <div class="form-inline">
                         <%= form_for(@chamado, url: {action: "historico"}, html: {class: "inline-form"}) do |f| %>
@@ -10,7 +30,7 @@
                                     <label for="exampleInputName2">Logradouro: </label>
                                 </div>
                                 <div class="form-group">
-                                    <%= f.text_field :logradouro , :class => "form-control" , :style => "width: 350px", :value => "#{@chamado['logradouro']}" , :readonly => true %>
+                                    <%= f.text_field :logradouro , :class => "form-control" , :style => "width: 350px", :value => "#{@chamado['logradouro']}" , :id => "log", :readonly => true %>
                                 </div>
                                 &nbsp;
                                 <div class="form-group">
@@ -31,7 +51,8 @@
                         <% end %>
                     </div>
                     <div class="row" style="margin-top: 20px; margin-bottom: 20px"></div>
-                    <table class="table table-striped" style="width: 55%">
+                    <div class="col-md-6">
+                    <table class="table table-striped" style="width: 99%">
                         <thead>
                             <TR>
                                 <TH> Serviço </TH>
@@ -49,6 +70,12 @@
                             <% end %>
                         </tbody>
                     </table>
+                    </div>
+                    
+                    <div class="col-md-6" id="mapa">
+                       
+
+                    </div>
                     <div class="col-md-12 text-center">
                         <ul class="pagination pagination-lg pager" id="myPager"></ul>
                     </div>
@@ -57,7 +84,56 @@
         </div>
     </div>
 </div>
+
+<!-- Scripts do maps -->
+
 <script>
+var geocoder;
+var map;
+var marker;
+  var map;
+  function initMap() {
+  map = new google.maps.Map(document.getElementById('mapa'), {
+    center: {lat: -8.054772, lng: -34.897472},
+    zoom: 16
+  });
+  
+  geocoder = new google.maps.Geocoder();
+   marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+    });
+}
+
+window.onload = function(e){ 
+    initMap();
+    carregarNoMapa(document.getElementById('log').value+' recife');
+}
+
+
+function carregarNoMapa(endereco) {
+        geocoder.geocode({ 'address': endereco + ', Brasil', 'region': 'BR' }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+ 
+                    $('#txtEndereco').val(results[0].formatted_address);
+                    $('#txtLatitude').val(latitude);
+                    $('#txtLongitude').val(longitude);
+ 
+                    var location = new google.maps.LatLng(latitude, longitude);
+                    marker.setPosition(location);
+                    map.setCenter(location);
+                    map.setZoom(16);
+                }
+            }
+        });
+    }
+
+
+
+
   $.fn.pageMe = function(opts){
     var $this = this,
         defaults = {
@@ -187,10 +263,11 @@ function some_div(){
  
 $( document ).ready(function() {
    
-$('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:25});
+$('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:10});
 
     
 });  
+
 
 
 </script>
